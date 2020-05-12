@@ -173,7 +173,7 @@ if command == 'enter':
         
     if command == 'inventory':
       print('\n')      
-      if inventory = []:
+      if inventory == []:
         print(' There is currently nothing in your inventory.')
       else:
         print(inventory)
