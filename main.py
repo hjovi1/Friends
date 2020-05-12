@@ -8,16 +8,16 @@ kitchen = Room("KITCHEN")
 kitchen.set_description("A dank and creatively decorated room for fishy cuisine.")
 
 dining_hall = Room("DINING ROOM")
-dining_hall.set_description("A large antique room where Smelly Cat likes to eat")
+dining_hall.set_description("A large antique room where Smelly Cat likes to eat.")
 
 living_room = Room("LIVING ROOM")
 living_room.set_description("A bright and comfortable room, where Smelly Cat likes to complete her daily sleep quota.")
 
 bedroom = Room("BEDROOM")
-bedroom.set_description("A room with a naturopathic sexy ambiance")
+bedroom.set_description("A room with a naturopathic sexy ambiance.")
 
 balcony = Room("BALCONY")
-balcony.set_description("A place for emotional release and fresh Long Island air")
+balcony.set_description("A place for emotional release and fresh Long Island air.")
 
 # Link rooms
 kitchen.link_room(dining_hall, "south")
@@ -68,7 +68,7 @@ jar = Item("jar")
 jar.set_description("With the tastiest, best-selling Brown Bird mint clusters.")
 dining_hall.set_item(jar)
 
-big_box = Item("big_box")
+big_box = Item("big box")
 big_box.set_description("With a barcalounger inside, made with comfort in mind to enjoy life's finest moments.")
 kitchen.set_item(big_box)
 
@@ -103,12 +103,12 @@ if command == 'enter':
     inhabitant = current_room.get_character()
     item = current_room.get_item()
     
-    print(" \n What would you like to do? : move, look, talk, take, help, exit")
+    print(" \n What would you like to do? : move, look, talk, take, inventory, give, help, exit")
     command = input(" >>> ")
     
     if command  == 'move':
       print('\n')
-      print(' Which direction?')
+      print(' Choose a direction: north, south, east, west')
       command = input(" >>> ")
 
       if command in ["north", "south", "east", "west"]:
@@ -116,7 +116,7 @@ if command == 'enter':
         current_room = current_room.move(command)
       else:
         print('\n')
-        print("You can't go that way!")      
+        print(" You can't go that way!")      
             
     if command == 'look':
       print('\n')
@@ -129,7 +129,7 @@ if command == 'enter':
       
       else:
         print('\n')
-        print('There is nothing to see here')
+        print('There is nothing else to see here!')
     
     if command == "take":
       if item is not None:
@@ -150,16 +150,38 @@ if command == 'enter':
         print('\n')
         print(' No one wants to talk here.')
     
+    if command == 'help':
+      print('\n')
+      print(" Type 'move' to navigate through the different rooms, check which rooms are linked in which direction.")
+      print(" Type 'look' to see who is in the room and what item can be found in the room.")
+      print(" Type 'talk' to here what the character in the room has to say.")
+      print(" Type 'take' to place the item in the room in your inventory.")
+      print(" Type 'give' to give an item to the character in the room.")
+      print(" Type 'exit' to exit the game and lose all progress.")
+    
     if command == 'exit':
       print ('\n')
       print('-'*100)
-      print ("Goodbye!")
-      sys.exit()      
+      print(' Are you sure you want to quit the game and lose all progress?')
+      command = input(" >>> ")
+      if command == 'yes':
+        print('\n')
+        print ("Goodbye!")
+        sys.exit()
+      else:
+        saved = False
+        
+    if command == 'inventory':
+      print('\n')      
+      if inventory = []:
+        print(' There is currently nothing in your inventory.')
+      else:
+        print(inventory)
             
-    if command == "help":
+    if command == "give":
       if inhabitant is not None:
         print('\n')        
-        print(" What will you help with? Choose an item from your inventory.")
+        print(" What will you give? Choose an item from your inventory.")
         print('\n')        
         help_with = input(' >>>')
         
@@ -185,7 +207,7 @@ if command == 'enter':
               print('\n')              
               print("[Phoebe Buffay says]: Look inside this vanity Rach!")
               print('\n')              
-              print("[Rachel Green says]: I love all these products! In no time, I'll be too glam to give a damn!")
+              print("[Rachel Green says]: I love all these products! Soon I'll be too glam to give a damn!")
               print('\n')              
               print("[Rachel Green says]: Thanks Phoebe, you know just how to make me feel better.") 
             
@@ -230,7 +252,8 @@ if command == 'enter':
           saved = True
         
       else:
-        print("I don't know how to " + command)      
+        print('\n')
+        print(" I don't know how to " + "'"+command+"'.")      
 
   
           
