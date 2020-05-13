@@ -68,7 +68,7 @@ jar = Item("jar")
 jar.set_description("With the tastiest, best-selling Brown Bird mint clusters.")
 dining_hall.set_item(jar)
 
-big_box = Item("big box")
+big_box = Item("big_box")
 big_box.set_description("With a barcalounger inside, made with comfort in mind to enjoy life's finest moments.")
 kitchen.set_item(big_box)
 
